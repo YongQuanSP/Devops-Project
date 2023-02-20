@@ -1,15 +1,11 @@
-import RPi.GPIO as GPIO
 import time
 from hal import hal_usonic as sonic
 
 # Set up the GPIO pins
-GPIO.setmode(GPIO.BCM)
 sonic.init()
-tails = sonic.get_distance()
 
-while True:
-    print(sonic.get_distance())
 
+def CheckFuelLevel():
     if sonic.get_distance() < 20:
         print("The fuel level is still full")
     elif sonic.get_distance() < 50:
